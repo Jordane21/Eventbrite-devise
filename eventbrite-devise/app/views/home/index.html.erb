@@ -1,0 +1,15 @@
+<div class="container">
+    <% if user_signed_in? && current_user.email == "broussolle.paul@gmail.com" %>
+       <h1> Bienvenue Paulo 🐽 </h1>
+    <% elsif user_signed_in? %>
+        <h1>Bienvenue  <%= current_user.email %> </h1> 
+        <hr>
+        <a href= <%=new_event_path%>>
+        <button type="button" class="btn btn-info"> Nouvel événement</button></a>
+    <% else %>
+        <h1>Bienvenue l&rsquo;ami 🐽 </h1>
+        <hr>
+        <a href= <%=new_user_registration_path%>><button type="button" class="btn btn-success"> <span class="glyphicon glyphicon-user"></span>&nbsp Sign Up</button></a> &nbsp &nbsp
+        <a href= <%=new_user_session_path%>><button type="button" class="btn btn-primary"> <span class="glyphicon glyphicon-log-in"></span> &nbsp Login</button> </a>
+    <% end %>
+</div>

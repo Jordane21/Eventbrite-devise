@@ -1,0 +1,53 @@
+<hr>
+<div class='container'>
+  <form_action = 'charges_path method' ='POST'>
+    <article>
+      <% if flash[:error].present? %>
+         <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+</div>
+      <% end %>
+      <label class="amount">
+        <span>Montant: 5.00€</span>
+      </label>
+    </article>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" 
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Paiement"
+            data-amount="500"
+            data-currency='eur'
+            data-locale="auto">
+    </script>
+  </form>
+</div>
+
+<hr>
+<div class='container'>
+
+  <p id="notice"><%= notice %></p>
+  
+  <p>
+    <strong>Name:</strong>
+    <%= @event.name %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @event.description %>
+  </p>
+
+  <p>
+    <strong>Date:</strong>
+    <%= @event.date %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @event.location %>
+  </p>
+
+  <%= link_to 'Edit', edit_event_path(@event) %> |
+  <%= link_to 'Back', events_path %>
+</div>
+<hr>
